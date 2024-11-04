@@ -57,5 +57,14 @@ export default {
     },
   },
 
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('tailwind-plugin-typed')({
+      delimiter: ';',
+      typeLetterDuration: 0.1,
+      pauseAfterWordDuration: 2,
+      deleteLetterDuration: 0.05,
+      pauseAfterDeletionDuration: 1,
+    }),
+  ],
 };

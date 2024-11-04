@@ -8,6 +8,9 @@ import DashboardPage from "./pages/DashboardPage";
 import Navbar from "./components/Navbar";
 import { UserContext } from "./context/UserContext";
 import ReadStoryPage from "./pages/ReadStoryPage";
+import AssignmentPage from "./pages/AssignmentPage";
+import FeedbackPage from "./pages/FeedbackPage";
+
 
 function App() {
   const { user } = useContext(UserContext);
@@ -25,6 +28,14 @@ function App() {
         <Route
           path="/dashboard/:sid/ReadStory"
           element={user ? <ReadStoryPage /> : <AuthPage />}
+        />
+        <Route
+          path="/dashboard/:sid/Assessment"
+          element={user ? <AssignmentPage /> : <AuthPage />}
+        />
+        <Route
+          path="/dashboard/Feedback/:sid"
+          element={user ? <FeedbackPage /> : <AuthPage />}
         />
       </Routes>
     </div>

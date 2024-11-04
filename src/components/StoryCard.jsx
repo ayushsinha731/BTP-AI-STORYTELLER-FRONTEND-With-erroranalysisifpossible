@@ -3,8 +3,8 @@ import childImage from "../assets/child-sample.png";
 import { FileText } from "lucide-react"; // Importing the lucide-react icon
 import { Link, useNavigate } from "react-router-dom";
 
-function StoryCard({ title, description, imageUrl, id }) {
-  //const navigate = useNavigate();
+function StoryCard({ title, description, imageUrl, id, maxPages }) {
+  const navigate = useNavigate();
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-lg">
       <img
@@ -17,7 +17,7 @@ function StoryCard({ title, description, imageUrl, id }) {
         <p className="text-gray-600 mb-4 flex-grow">{description}</p>
         <div className="flex items-center text-gray-600 mb-4">
           <FileText className="mr-2" size={20} />
-          <span>3 pages</span>
+          <span>{maxPages} pages</span>
         </div>
         {/* Buttons section */}
         <div className="flex space-x-4 mt-auto">
@@ -26,7 +26,10 @@ function StoryCard({ title, description, imageUrl, id }) {
               Read
             </button>
           </Link>
-          <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-300">
+          <button
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors duration-300"
+            onClick={() => navigate(`/dashboard/${id}/Assessment`)}
+          >
             Take Assessment
           </button>
         </div>

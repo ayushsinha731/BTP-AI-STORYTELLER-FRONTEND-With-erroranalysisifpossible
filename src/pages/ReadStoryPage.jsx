@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, ClipboardCheck } from "lucide-react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -8,7 +8,7 @@ function ReadStoryPage() {
   const [currentPage, setCurrentPage] = useState(0); // Current page number
   const [story, setStory] = useState(null); // Story data
   const { sid } = useParams(); // Story ID from URL params
-
+  const navigate = useNavigate();
   // Fetch the story when the component mounts or when `sid` changes
   useEffect(() => {
     const fetchStory = async () => {
@@ -45,6 +45,7 @@ function ReadStoryPage() {
 
   const handleAssessment = () => {
     console.log("Taking assessment");
+    navigate(`/dashboard/${sid}/Assessment`);
   };
 
   if (!story) {
